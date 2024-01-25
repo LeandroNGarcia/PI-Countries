@@ -1,0 +1,91 @@
+.contain-loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    display: block;
+}
+
+.loading-contain{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.loading {
+    border: 5px solid transparent;
+    border-style:dashed;
+    width: 15em;
+    height: 15em;
+    border-radius: 100%;
+    border-top-color:var(--secondary-color);
+    filter: drop-shadow(var(--secondary-color) 0 0 10px);
+    animation: load linear 1.5s infinite;
+}
+
+@keyframes load {
+    0%{
+        transform: rotate(0deg);
+    };
+    15%{
+        transform: rotate(15deg);
+    };
+    25%{
+        transform: rotate(45deg);
+    };
+    30% {
+        transform: rotate(60deg);
+    }
+    40% {
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(140deg);
+    }
+    60% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(240deg);
+    }
+    90% {
+        transform: rotate(280deg);
+    }
+    95% {
+        transform: rotate(320deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.welcome-mes{
+    filter: drop-shadow(white 0 0 18px);
+    text-shadow: black 0 0 .5px;
+    color: white;
+    font-size: 4em;
+    transition: all .5s;
+    cursor: default;
+    font-family: var(--secondary-font);
+}
+#wel-top,
+#wel-bot{
+    -webkit-text-stroke: white 1px;
+    color: transparent;
+    text-shadow: none;
+}
+
+#wel-mid:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+#wel-mid:active{
+    filter: drop-shadow(white 0 0 25px);
+    transform: scale(1.5);
+    cursor: pointer;
+}

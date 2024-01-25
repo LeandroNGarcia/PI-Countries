@@ -1,0 +1,44 @@
+.Countries{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4em;
+    justify-content: center;
+    padding-top: 1.5em;
+}
+
+.Pagination{
+    position: absolute;
+    bottom:0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    gap: .2em;
+    justify-content: center;
+    align-items: center;
+}
+
+.country{
+    background-color: rgba(0, 0, 0, 0.822);
+    padding: 1em;
+    width: 10em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    backdrop-filter: blur(3px);
+    transition: all .1s;
+}
+
+.country:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 20px var(--secondary-color);
+    transform: translate(0, -1em);
+    backdrop-filter: none;
+    filter: none;
+}
+
+#num-pag{
+    width: 3.6em;
+    height: 2.9em;
+}

@@ -1,0 +1,94 @@
+.contain-detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    margin-bottom: 3em;
+    width: 40vw;
+    height: 36vh;
+    background-color: rgba(0, 0, 0, 0.733);
+    padding: 3em;
+    border: 3px solid transparent;
+    border-radius: 15px;
+    transition: .1s;
+    z-index: 0;
+}
+.detail::after{
+    content: "";
+    position: absolute;
+    z-index: 0;
+    border: 3px solid white;
+    width: 38em;
+    height: 20em;
+    border-radius: 15px;
+    transition: .1s;
+    z-index: -1;
+}
+
+.detail:hover {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 15px var(--secondary-color);
+}
+
+.detail:hover::after{
+    border-color: var(--secondary-color);
+}
+
+.primary-content {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    cursor: default;
+}
+.secondary-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+}
+
+.secondary-content::before {
+    content: "";
+    height: 16em;
+    border: 1px solid white;
+    position: absolute;
+    left: 56%;
+    border-radius: 25px;
+    transition: .1s;
+}
+
+.detail:hover .secondary-content::before{
+    border-color: var(--secondary-color);
+}
+
+.span-detail {
+    font-size: .85em;
+    position: relative;
+    top: .5em;
+    height: .2em;
+    color: grey
+}
+
+.activities{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    max-width: 100vw;
+    overflow-x: scroll;
+}
+
+.volverAtras{
+    margin-top: 1.5em;
+}

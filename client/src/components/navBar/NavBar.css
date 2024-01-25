@@ -1,0 +1,18 @@
+.nav-bar{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.849);
+    backdrop-filter: blur(4px);
+    padding: 1.5em;
+    width: 96.7vw;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+
+#search {
+    width: 14em;
+}

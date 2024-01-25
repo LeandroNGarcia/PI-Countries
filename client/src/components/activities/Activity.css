@@ -1,0 +1,115 @@
+.contain-modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 100vh;
+    width: 100vw;
+    background: transparent;
+    backdrop-filter: blur(5px);
+}
+
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(0, 0, 0, 0.774);
+    backdrop-filter: blur(5px);
+    width: 25em;
+    height: 15em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: .5em;
+}
+
+.elimin{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(0, 0, 0, 0.863);
+    backdrop-filter: blur(5px);
+    width: 25em;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: .5em;
+}
+
+.eleccion-modal{
+    display: flex;
+    gap: 2em;
+}
+
+.activity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: 5em;
+    font-size: .8em;
+    gap: 1.8em;
+    background-color: black;
+    background-size: cover;
+    background-repeat:no-repeat;
+    border: 1px solid black;
+    border-radius: 30px;
+    margin: 1em;
+    padding: 1em 1.5em;
+    text-shadow: 0.5px 0.5px 0.5px black;
+    transition: all 0.1s;
+}
+
+.activity:hover{
+    border-color: white;
+    box-shadow: 0 0 15px white, 0 0 20px white;
+    cursor: pointer;
+}
+
+.act-name {
+    font-size: .85em;
+    position: relative;
+    top: 1.5em;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.637);
+    padding: 1px 2.5px;
+    font-family: var(--secondary-font);
+    font-weight: 900;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: .1s;
+}
+
+.activity:hover .act-name{
+    background-color: var(--secondary-color);
+    border-color: black;
+}
+
+.view {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.795);
+    color: white;
+    width: 10em;
+    height: max-content;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+    cursor: none;
+}
+
+.view-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
