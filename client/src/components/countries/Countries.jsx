@@ -1,6 +1,6 @@
-import React from 'react'
-import Country from './Country'
+import React, { Suspense } from 'react'
 import { useDispatch, useSelector } from "react-redux"
+import SkeletonCountry from "../skeletons/SkeletonCountry"
 import { setPage } from '../../redux/actions/actions';
 import "./Countries.css"
 
@@ -35,11 +35,21 @@ const Countries = ({ navigate }) => {
 
     const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
 
+    const Country = React.lazy(()=>{
+        return new Promise((resolve) => {
+            setTimeout(()=>{
+                resolve(import("./Country"))
+            },220)
+        })
+    })
+
     return (
         <>
             <div className='Countries'>
                 {countries.length ? currentCountriesDisplay.map((c) => (
-                    <Country key={c.id} c={c} navigate={navigate} />
+                    <Suspense key={c.id} fallback={<SkeletonCountry/>}>
+                        <Country key={c.id} c={c} navigate={navigate} />
+                    </Suspense>
                 )) :
                     <span style={{
                         fontSize:"3em",

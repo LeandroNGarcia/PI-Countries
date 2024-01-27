@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Activity.css"
 import { useLocation } from 'react-router-dom'
 
@@ -76,71 +76,74 @@ const Activity = ({ a, countryId, navigate, position }) => {
     setView(false)
   }
 
-  return (
-    <>
-      <div className='activity' style={styleBack} onMouseEnter={onMouseUp} onMouseLeave={onMouseDown}>
-        <div>
-        <span className='act-name'>Name</span>
-        <h2>{a.name}</h2>
-        </div>
-        <div>
-        <span className='act-name'>Season</span>
-        <h2>{a.season}</h2>
-        </div>
-        <div>
-        <span className='act-name'>Duration</span>
-        <h2>{a.duration}</h2>
-        </div>
-        <div>
-        <span className='act-name'>Dificult</span>
-        <h2>{a.dificult}</h2>
-        </div>
-        <button onClick={handleModal}>
-          <span class="material-icons">
-            delete_outline
-          </span>
-        </button>
-      </div>
-      {modal &&
-        <div className='contain-modal'>
-          <div className='modal'>
-            {pathname === "/activity-hub" ?
-              <h2>¿Seguro deseas eliminar globalmente esta actividad?</h2>
-              :
-              <h2>¿Seguro que quieres eliminar esta actividad del pais?</h2>
-            }
-            <div className='eleccion-modal'>
-              <button onClick={pathname === "/activity-hub" ? handleDeleteGlobal : handleDelete}>Si</button>
-              <button onClick={handleModal}>No</button>
+      return (
+        <>
+          <div className='activity' style={styleBack} onMouseEnter={onMouseUp} onMouseLeave={onMouseDown}>
+            <div>
+            <span className='act-name'>Name</span>
+            <h2>{a.name.length > 12 ? <small>{a.name}</small> :
+            a.name}</h2>
+            </div>
+            <div>
+            <span className='act-name'>Season</span>
+            <h2>{a.season}</h2>
+            </div>
+            <div>
+            <span className='act-name'>Duration</span>
+            <h2>{a.duration === 0 ? "No tiene" : <div>{a.duration}<small>hs</small></div>}</h2>
+            </div>
+            <div>
+            <span className='act-name'>Dificult</span>
+            <h2>{a.dificult}</h2>
+            </div>
+            <button onClick={handleModal}>
+              <span class="material-icons">
+                delete_outline
+              </span>
+            </button>
+          </div>
+          {modal &&
+            <div className='contain-modal'>
+              <div className='modal'>
+                {pathname === "/activity-hub" ?
+                  <h2>¿Estas seguro que quieres eliminar globalmente esta actividad?</h2>
+                  :
+                  <h2>¿Estas seguro que quieres eliminar esta actividad del pais?</h2>
+                }
+                <div className='eleccion-modal'>
+                  <button onClick={pathname === "/activity-hub" ? handleDeleteGlobal : handleDelete}>Si</button>
+                  <button onClick={handleModal}>No</button>
+                </div>
+              </div>
+            </div>
+          }
+          {elimin &&
+          <div className='contain-elimin'>
+            <div className='elimin'>
+              <h1>Actividad Eliminada Exitosamente</h1>
+              <button onClick={() => { navigate("/home"); handleElimin() }}>OK</button>
             </div>
           </div>
-        </div>
-      }
-      {elimin &&
-        <div className='elimin'>
-          <h1>Actividad Eliminada Exitosamente</h1>
-          <button onClick={() => { navigate("/home"); handleElimin() }}>OK</button>
-        </div>
-      }
-      {(view & pathname === "/activity-hub") ?
-        <div className='view' style={{
-          left: `${position.x - 250}px`,
-          top: `${position.y - 150}px`
-        }} >
-          <p>{a.Countries.length === 1 ? "Pais" : "Paises"} con esta actividad:</p>
-          {a.Countries.map((c) => (
-            <div key={c.id} className='view-item'>
-              <img src={c.flag} width={20}/>
-              <p style={{
-                marginLeft: "5px"
-              }}>{c.name}</p>
+          }
+          {(view & pathname === "/activity-hub") ?
+            <div className='view' style={{
+              left: `${position.x - 250}px`,
+              top: `${position.y - 150}px`
+            }} >
+              <p>{a.Countries.length === 1 ? "Pais" : "Paises"} con esta actividad:</p>
+              {a.Countries.map((c) => (
+                <div key={c.id} className='view-item'>
+                  <img src={c.flag} width={20}/>
+                  <p style={{
+                    marginLeft: "5px"
+                  }}>{c.name}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        : ""
-      }
-    </>
-  )
+            : ""
+          }
+        </>
+      )
 }
 
 export default Activity

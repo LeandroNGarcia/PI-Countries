@@ -19,13 +19,15 @@
 
 .country{
     background-color: rgba(0, 0, 0, 0.822);
-    padding: 1em;
+    padding: .7em;
     width: 10em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    text-shadow: 1px 1px 0 black;
+    height: 14em;
     backdrop-filter: blur(3px);
     transition: all .1s;
 }

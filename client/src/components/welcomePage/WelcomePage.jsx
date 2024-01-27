@@ -22,7 +22,7 @@ const WelcomePage = ({ navigate, handleBackChange }) => {
     <>
       <div className='contain-welcome'>
         <h1 className='welcome-mes' id='wel-top'>Welcome to the World</h1>
-        <h1 className='welcome-mes' id='wel-mid' onClick={handleButton}>Welcome to the World</h1>
+        <h1 className='welcome-mes' data-testid= "wel-mid" id='wel-mid' onClick={handleButton}>Welcome to the World</h1>
         <h1 className='welcome-mes' id='wel-bot'>Welcome to the World</h1>
       </div>
       {loading &&

@@ -7,6 +7,7 @@
     height: 100vh;
     background: transparent;
     backdrop-filter: blur(5px);
+    z-index: 1;
 }
 
 .form-global{
@@ -14,16 +15,36 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background-color: rgba(128, 128, 128, 0.623);
+    background-color: rgba(110, 110, 110, 0.623);
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-direction: column();
+    justify-content: center;
     gap: 1em;
     padding: 3em;
-    justify-content: start;
     align-items: center;
-    width:55em;
-    height: 59vh;
+    width:60vw;
+    height: 60vh;
+    border: 2px solid white;
+    border-style: inset;
+    border-radius: 15px;
+}
+
+.activity-select {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.activity-post {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-global input:nth-child(8) {
@@ -39,7 +60,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background-color: rgba(128, 128, 128, 0.623);
+    background-color: rgba(110, 110, 110, 0.623);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,6 +69,9 @@
     width: 25em;
     height: max-content;
     padding: 2em;
+    border: 2px solid white;
+    border-style: inset;
+    border-radius: 15px;
 }
 
 .form input:nth-child(8) {
@@ -63,6 +87,7 @@
     justify-content: center;
     align-items: center;
     gap: 1.5em;
+    margin-top: 1.5em;
 }
 
 .activity-bar{
@@ -72,7 +97,6 @@
     justify-content: center;
     width: 100vw;
     margin-bottom: 2em;
-    background-color: black;
 }
 
 .span-error{
@@ -82,6 +106,7 @@
     filter: drop-shadow(rgb(32, 32, 32) 1px 1px 0);
     font-family: 'Anton', sans-serif;
     position: relative;
+    text-wrap: wrap;
 }
 
 .form input {
@@ -89,19 +114,24 @@
 }
 
 .form label{
-    font-family: 'Alfa Slab One', serif;
+    font-size: 1.2em;
+    color: white;
+    font-weight: bolder;
     text-shadow: black 1px 1px 0;
 }
 
 .form #name {
     text-align: center;
 }
+
 .form-global input {
     height: max-content;
 }
 
 .form-global label{
-    font-family: 'Alfa Slab One', serif;
+    font-size: 1.2em;
+    color: white;
+    font-weight: bolder;
     text-shadow: black 1px 1px 0;
 }
 

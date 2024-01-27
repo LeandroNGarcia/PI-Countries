@@ -7,7 +7,7 @@ const Country = ({ c, navigate }) => {
       <img src={c.flag} alt="" width={60} />
       </div>
       {c.capital ?
-      <h3>{c.name} <br/> <small>({c.capital})</small></h3>
+      <h3>{c.name.length > 13 ? <small>{c.name}</small> : c.name} <br/> <small>({c.capital})</small></h3>
       : <h3>{c.name}</h3>
       }
       <p>{c.continent}</p>

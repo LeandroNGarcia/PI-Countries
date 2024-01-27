@@ -7,6 +7,7 @@
     width: 100vw;
     background: transparent;
     backdrop-filter: blur(5px);
+    z-index: 1;
 }
 
 .modal{
@@ -16,14 +17,28 @@
     transform: translate(-50%,-50%);
     background-color: rgba(0, 0, 0, 0.774);
     backdrop-filter: blur(5px);
-    width: 25em;
+    width: 30em;
     height: 15em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1em;
-    padding: .5em;
+    gap: 2em;
+    padding: 2em;
+    border: 2px solid white;
+    border-style: inset;
+    text-shadow: 1px 1px 0 black;
+}
+
+.contain-elimin{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: transparent;
+    backdrop-filter: blur(5px);
 }
 
 .elimin{
@@ -33,26 +48,29 @@
     transform: translate(-50%,-50%);
     background-color: rgba(0, 0, 0, 0.863);
     backdrop-filter: blur(5px);
-    width: 25em;
+    width: 30em;
     height: max-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1em;
-    padding: .5em;
+    padding: 2em;
+    border: 2px solid white;
+    border-style: inset;
+    text-shadow: 1px 1px 0 black;
 }
 
 .eleccion-modal{
     display: flex;
-    gap: 2em;
+    gap: 4em;
 }
 
 .activity{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: max-content;
+    width: 36em;
     height: 5em;
     font-size: .8em;
     gap: 1.8em;
@@ -65,6 +83,9 @@
     padding: 1em 1.5em;
     text-shadow: 0.5px 0.5px 0.5px black;
     transition: all 0.1s;
+    h2 {
+        text-wrap: nowrap;
+    }
 }
 
 .activity:hover{
@@ -97,14 +118,16 @@
     background-color: rgba(0, 0, 0, 0.795);
     color: white;
     width: 10em;
-    height: max-content;
-    border: 1px solid transparent;
+    min-height: 6em;
+    max-height: max-content;
+    border: 1.5px solid white;
     border-radius: 15px;
+    border-style: inset;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: .5em;
+    padding: .2em;
     cursor: none;
 }
 
@@ -112,4 +135,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -18px;
 }

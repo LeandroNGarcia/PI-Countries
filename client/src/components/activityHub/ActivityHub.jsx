@@ -49,11 +49,11 @@ const ActivityHub = ({ navigate, postActivity, handleBackChange }) => {
             {form &&
                 <ActivityForm handleForm={handleForm} postActivity={postActivity} />
             }
-            <div className='contain-acts'>
-                {activities.map((a) => (
-                    <Activity key={a.id} a={a} navigate={navigate} position={position} handleMouseMove={handleMouseMove} />
-                ))}
-            </div>
+                <div className='contain-acts'>
+                    {activities.map((a) => (
+                        <Activity key={a.id} a={a} navigate={navigate} position={position} handleMouseMove={handleMouseMove} />
+                    ))}
+                </div>
         </div>
     )
 }

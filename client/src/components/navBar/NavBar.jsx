@@ -51,6 +51,8 @@ const NavBar = ({ navigate }) => {
     dispatch(setValueOrden("name,asc"))
     dispatch(setValueContinente("todos"))
     dispatch(setPage(1))
+    dispatch(setValueSeason(""))
+    document.getElementById("season").value = "";
     document.getElementById("orden").value = "name,asc";
     document.getElementById("continente").value = "todos";
     document.getElementById("season").value = "";
@@ -80,12 +82,16 @@ const NavBar = ({ navigate }) => {
       document.getElementById("filtro").value = "";
       dispatch(setValueFiltro(""))
     }
+    document.getElementById("orden").value = "name,asc";
+    document.getElementById("season").value = "";
+    dispatch(setValueSeason(""))
+    dispatch(setValueOrden("name,asc"))
     dispatch(setValueContinente(e.target.value))
     dispatch(setContinent(value))
     dispatch(setPage(1))
   }
   return (
-    <div className="nav-bar" >
+    <div className="nav-bar" role='menubar' >
       <button onClick={() => navigate("/")} style={{
         display: "flex",
         flexDirection: "column",
@@ -134,7 +140,7 @@ const NavBar = ({ navigate }) => {
             <option key={a.name} value={a.name}>{a.name}</option>
           ))}
         </select>
-        <select name="season" id="season" onChange={handleSeason} disabled={activities.length === 0}
+        <select name="season" id="season" onChange={handleSeason} disabled={activities.length === 0 || filtro === ""}
           title={activities.length === 0 ? 'No hay actividades disponibles' : ""} defaultValue={season}>
           <option value="" title='Sin Filtro'>Temporada</option>
           <option value="Verano">Verano</option>

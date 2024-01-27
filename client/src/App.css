@@ -17,6 +17,7 @@
   justify-content: center;
   background-attachment:scroll;
   background-size: cover;
+  background-position: center;
 }
 
 .contain-countries{
