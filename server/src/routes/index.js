@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { allCountries, countryById, countryByName, addActivities, removeAct, filterActivities, deleteAct, getActivities } = require("../controllers/controllers");
+const { allCountries, countryById, countryByName, addActivities, removeAct, filterActivities, deleteAct, getActivities, editActivity } = require("../controllers/controllers");
 
 const router = Router();
 
@@ -81,6 +81,18 @@ router.get("/activities", async (req, res) => {
         const activities = await getActivities()
         res.status(200).json(activities)
     } catch (error) {
+        res.status(400).send(error.message)
+    }
+})
+
+router.put("/activity/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name, duration, dificult, season } = req.body;
+        const response = await editActivity(id, name, season, duration, dificult);
+        res.status(200).send(response)
+    } catch (error) {
+        console.log(error);
         res.status(400).send(error.message)
     }
 })

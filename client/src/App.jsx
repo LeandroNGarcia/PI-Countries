@@ -21,9 +21,23 @@ function App() {
     try {
       const { name, season, duration, dificult, countryId, countryId2, countryId3 } = dataForm
       await axios.post("http://localhost:3001/activity", { name: name.trim(), season, duration, dificult, countryId, countryId2, countryId3 });
-      setPost({status:true, content:"aprove"})
+      setPost({ status: true, content: "aprove" })
     } catch (error) {
-      setPost({status:true, content:"error", error: error.message})
+      setPost({ status: true, content: "error", error: error.message })
+    }
+  }
+
+  const updateActivity = async (editTable) => {
+    try {
+      const res = await axios.put(`http://localhost:3001/activity/${editTable.id}`, {
+        name: editTable.name,
+        season: editTable.season,
+        duration: editTable.duration,
+        dificult: editTable.dificult
+      })
+      setPost({ status: true, content: "edit" })
+    } catch (error) {
+      setPost({ status: true, content: "error", error: error.message })
     }
   }
   const [backgroundImage, setBack] = useState(null);
@@ -39,21 +53,28 @@ function App() {
             <div className="post-response">
               <p>Ha ocurrido un error</p>
               <p>{post.error}</p>
-              <button onClick={()=>{setPost({status:false})}}>Ok</button>
+              <button onClick={() => { setPost({ status: false }) }}>Ok</button>
             </div>
-            :
+            : ""}
+          {post.content === "aprove" ?
             <div className="post-response">
               <p>Actividad Añadida Exitosamente</p>
-              <button onClick={()=>{navigate("/home"); setPost({status:false})}}>Ok</button>
+              <button onClick={() => { navigate("/home"); setPost({ status: false }) }}>Ok</button>
             </div>
-            }
+            : ""}
+          {post.content === "edit" ?
+            <div className="post-response">
+              <p>Actividad Actualizada Exitosamente</p>
+              <button onClick={() => { navigate("/home"); setPost({ status: false }) }}>Ok</button>
+            </div>
+            : ""}
         </div>
         : ""}
       <Routes>
         <Route path='/' element={<WelcomePage navigate={navigate} handleBackChange={handleBackChange} />} />
         <Route path='/home' element={<HomePage navigate={navigate} handleBackChange={handleBackChange} />} />
         <Route path='/country/:id' element={<Detail navigate={navigate} postActivity={postActivity} handleBackChange={handleBackChange} />} />
-        <Route path="/activity-hub" element={<ActivityHub navigate={navigate} postActivity={postActivity} handleBackChange={handleBackChange} />} />
+        <Route path="/activity-hub" element={<ActivityHub navigate={navigate} postActivity={postActivity} handleBackChange={handleBackChange} updateActivity={updateActivity} />} />
         <Route path='*' element={<NotFoundPage navigate={navigate} />} />
       </Routes>
     </div>

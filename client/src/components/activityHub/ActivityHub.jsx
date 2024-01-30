@@ -5,7 +5,7 @@ import Activity from '../activities/Activity'
 import ActivityForm from '../detail/ActivityBar'
 import "./ActivityHub.css"
 
-const ActivityHub = ({ navigate, postActivity, handleBackChange }) => {
+const ActivityHub = ({ navigate, postActivity, handleBackChange, updateActivity }) => {
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -51,7 +51,7 @@ const ActivityHub = ({ navigate, postActivity, handleBackChange }) => {
             }
                 <div className='contain-acts'>
                     {activities.map((a) => (
-                        <Activity key={a.id} a={a} navigate={navigate} position={position} handleMouseMove={handleMouseMove} />
+                        <Activity key={a.id} a={a} navigate={navigate} position={position} handleMouseMove={handleMouseMove} updateActivity={updateActivity} />
                     ))}
                 </div>
         </div>

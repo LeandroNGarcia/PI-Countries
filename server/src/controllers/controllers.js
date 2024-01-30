@@ -1,6 +1,7 @@
-const { Country, Activity, CountryActivity } = require("../db.js");
+const { Country, Activity } = require("../db.js");
 const { Op } = require("sequelize");
 const data = require("../../api/db.json");
+
 let countries = data.countries;
 countries.forEach(async (c) => {
   await Country.findOrCreate({
@@ -17,46 +18,6 @@ countries.forEach(async (c) => {
     },
   });
 });
-
-const deleteActivitiesWithoutCountry = async () => {
-  try {
-    const activitiesWithoutCountry = await Activity.findAll({
-      include: [
-        {
-          model: Country,
-          attributes: [],
-          where: {
-            id: {
-              [Op.is]: null,
-            },
-          },
-        },
-      ],
-    });
-
-    const activityIdsToDelete = activitiesWithoutCountry.map(
-      (activity) => activity.id
-    );
-
-    await Activity.destroy({
-      where: {
-        id: {
-          [Op.in]: activityIdsToDelete,
-        },
-      },
-    });
-
-    console.log("Actividades sin país asociado eliminadas con éxito.");
-  } catch (error) {
-    console.error("Error al eliminar actividades sin país:", error);
-  }
-};
-
-deleteActivitiesWithoutCountry()
-  .then(() => {})
-  .catch((error) => {
-    console.log(error);
-  });
 
 const allCountries = async () => {
   const countries = await Country.findAll({
@@ -170,6 +131,25 @@ const getActivities = async () => {
   }
 };
 
+const editActivity = async (id, name, season, duration, dificult) => {
+  try {
+    await Activity.update({
+      name: name,
+      dificult: dificult,
+      duration: duration,
+      season: season
+    },
+    {
+      where: {
+        id: id
+      }
+    });
+    return "Actividad Actualizada"
+    } catch (error) {
+      throw error
+    }
+}
+
 module.exports = {
   allCountries,
   addActivities,
@@ -178,4 +158,5 @@ module.exports = {
   removeAct,
   deleteAct,
   getActivities,
+  editActivity
 };

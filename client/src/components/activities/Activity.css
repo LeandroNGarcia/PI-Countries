@@ -1,8 +1,8 @@
-.contain-modal{
+.contain-modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     height: 100vh;
     width: 100vw;
     background: transparent;
@@ -10,11 +10,11 @@
     z-index: 1;
 }
 
-.modal{
+.modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.774);
     backdrop-filter: blur(5px);
     width: 30em;
@@ -30,22 +30,22 @@
     text-shadow: 1px 1px 0 black;
 }
 
-.contain-elimin{
+.contain-elimin {
     position: absolute;
     width: 100vw;
     height: 100vh;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background: transparent;
     backdrop-filter: blur(5px);
 }
 
-.elimin{
+.elimin {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.863);
     backdrop-filter: blur(5px);
     width: 30em;
@@ -61,12 +61,12 @@
     text-shadow: 1px 1px 0 black;
 }
 
-.eleccion-modal{
+.eleccion-modal {
     display: flex;
     gap: 4em;
 }
 
-.activity{
+.activity {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,22 +76,150 @@
     gap: 1.8em;
     background-color: black;
     background-size: cover;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     border: 1px solid black;
     border-radius: 30px;
     margin: 1em;
     padding: 1em 1.5em;
-    text-shadow: 0.5px 0.5px 0.5px black;
+    text-shadow: 1px 1px 0.5px black;
+    color: white;
     transition: all 0.1s;
+
     h2 {
         text-wrap: nowrap;
     }
 }
 
-.activity:hover{
+.activity:hover {
     border-color: white;
     box-shadow: 0 0 15px white, 0 0 20px white;
     cursor: pointer;
+}
+
+.activity-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 36em;
+    max-width: max-content;
+    height: 15em;
+    font-size: 1.2em;
+    gap: 3em;
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 1px solid;
+    border-radius: 30px;
+    border-color: white;
+    box-shadow: 0 0 15px white, 0 0 20px white;
+    margin: 1em;
+    padding: 1em 1.5em;
+    text-shadow: 1px 1px 0.5px black;
+    color: white;
+    transition: all 0.1s;
+    cursor: default;
+    animation: opa linear .5s;
+    h2 {
+        text-wrap: nowrap;
+    }
+}
+
+@keyframes opa {
+    from {
+        height: 5em;
+    }
+    to {
+        height: 15em;
+    }
+}
+
+.activity-detail-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47em;
+    height: 15em;
+    font-size: 1.2em;
+    gap: 1.8em;
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 1px solid;
+    border-radius: 30px;
+    border-color: white;
+    box-shadow: 0 0 15px white, 0 0 20px white;
+    margin: 1em;
+    padding: 1em 1.5em;
+    text-shadow: 1px 1px 0.5px black;
+    color: white;
+    transition: all 0.1s;
+    cursor: default;
+
+    h2 {
+        text-wrap: nowrap;
+    }
+
+    input {
+        width: 2em;
+        text-align: center;
+        background: transparent;
+        font-family: var(--primary-font);
+        text-shadow: 1px 1px 0.5px black;
+        font-size: 1.3em;
+        height: 2em;
+    }
+
+    input:focus {
+        background: transparent;
+        color: white;
+    }
+
+    .act-name {
+        z-index: 2;
+    }
+
+    input::placeholder {
+        font-family: var(--primary-font);
+        text-shadow: 1px 1px 0.5px black;
+        font-size: 1em;
+    }
+
+    select {
+        width: 8.5em;
+        text-align: center;
+        background: transparent;
+        font-family: var(--primary-font);
+        text-shadow: 1px 1px 0.5px black;
+        height: 3.5em;
+        font-size: 1.3em;
+    }
+    select:focus {
+        background: transparent;
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5em;
+    }
+}
+
+.errores-edit {
+    color: red;
+    font-size: 1em;
+    position: relative;
+    bottom: -4em;
+    text-shadow: none
+}
+
+.contain-errors{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    margin-bottom: 2em;
+    position: relative;
+    bottom: 2em;
 }
 
 .act-name {
@@ -108,7 +236,12 @@
     transition: .1s;
 }
 
-.activity:hover .act-name{
+.activity:hover .act-name {
+    background-color: var(--secondary-color);
+    border-color: black;
+}
+
+.activity-detail:hover .act-name {
     background-color: var(--secondary-color);
     border-color: black;
 }
@@ -131,9 +264,26 @@
     cursor: none;
 }
 
-.view-item{
+.view-item {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: -18px;
+}
+
+.contain-detail-activity {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.678);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    z-index: 1;
 }

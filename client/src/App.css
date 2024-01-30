@@ -5,22 +5,22 @@
   text-align: center;
 }
 
-.app{
+.app {
   width: 100vw;
   height: 100vh;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-attachment:scroll;
+  background-attachment: scroll;
   background-size: cover;
   background-position: center;
 }
 
-.contain-countries{
+.contain-countries {
   padding: 4em;
 }
 
@@ -30,9 +30,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -41,6 +43,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -61,8 +64,11 @@
 }
 
 .content-postResponse {
-position: absolute;
-z-index: 10;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100vw;
   height: 100vh;
   display: flex;
