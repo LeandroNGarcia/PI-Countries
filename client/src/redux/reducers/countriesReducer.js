@@ -67,6 +67,7 @@ export const countriesReducer = (state = initialState, action) => {
       return {
         ...state,
         countries: fCountries,
+        fillCountries: fCountries
       };
     case SET_BYNAME:
       return {

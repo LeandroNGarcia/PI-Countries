@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Search from './Search'
 import { useDispatch, useSelector } from 'react-redux'
 import { setActivities, setContinent, setCountries, setFilter, setOrder, setPage, setSearch, setSeason, setValueContinente, setValueFiltro, setValueOrden, setValueSeason } from '../../redux/actions/actions'
@@ -20,7 +20,7 @@ const NavBar = ({ navigate }) => {
       .sort((a, b) => a.name.localeCompare(b.name));
   }
 
-  useEffect(() => {
+useEffect(() => {
     dispatch(setActivities())
   }, [])
 
@@ -83,8 +83,6 @@ const NavBar = ({ navigate }) => {
       dispatch(setValueFiltro(""))
     }
     document.getElementById("orden").value = "name,asc";
-    document.getElementById("season").value = "";
-    dispatch(setValueSeason(""))
     dispatch(setValueOrden("name,asc"))
     dispatch(setValueContinente(e.target.value))
     dispatch(setContinent(value))

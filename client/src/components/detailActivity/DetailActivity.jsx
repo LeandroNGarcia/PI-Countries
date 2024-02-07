@@ -15,10 +15,17 @@ const DetailActivity = ({ a, styleBack, handleModal, handleDetailAct, updateActi
         dificult: a.dificult
     })
 
+    const dataBase = {
+        season: a.season,
+        duration: a.duration,
+        dificult: a.dificult
+    }
+
     const handleSaveEdit = async (e) => {
         e.preventDefault()
         if (!errors.duration && !errors.dificult) {
             updateActivity(editTable);
+            handleDialog("close");
             return
         }
         alert("Corrige los errores para guardar")
@@ -50,10 +57,16 @@ const DetailActivity = ({ a, styleBack, handleModal, handleDetailAct, updateActi
         setEdit((prev) => !prev)
     }
 
+    const [isDialog, setIsDialog] = useState(false)
+    const handleDialog = () => {
+        setIsDialog((prev) => !prev)
+    }
+
     return (
         <div className='contain-detail-activity'>
-            {edit && <h1>Edit Menu</h1>}
-            {!edit ?
+            {edit ? <h1>Edit Menu</h1> : ""}
+
+            {(!edit) ?
                 <div className='activity-detail' style={styleBack}>
                     <div>
                         <span className='act-name'>Name</span>
@@ -102,12 +115,22 @@ const DetailActivity = ({ a, styleBack, handleModal, handleDetailAct, updateActi
                         <span className='act-name'>Dificult</span>
                         <input type='number' name='dificult' value={editTable.dificult} onChange={handleEdit} />
                     </div>
-                    <button onClick={handleSaveEdit}>
+                    <button onClick={handleDialog} disabled={errors.duration || errors.dificult || (editTable.season === dataBase.season & dataBase.duration === editTable.duration & editTable.dificult === dataBase.dificult)}>
                         <span class="material-icons">
                             save_as
                         </span>
                         Guardar Cambios
                     </button>
+                    {isDialog &&
+                    <div className='contain-modal'>
+                        <div className='modal'>
+                            <h2>¿Seguro deseas guardar los cambios?</h2>
+                            <div style={{display:"flex", flexDirection:"row", gap:"3em"}}>
+                                <button onClick={handleSaveEdit} >Si</button>
+                                <button onClick={handleDialog}>No</button>
+                            </div>
+                        </div>
+                    </div>}
                 </div>
             }
             {errors &&
@@ -123,9 +146,13 @@ const DetailActivity = ({ a, styleBack, handleModal, handleDetailAct, updateActi
                     </span>
                     {edit ? "Cancelar" : "Cerrar"}
                 </button>
-                {pathname === "/activity-hub" && !edit ? <button onClick={handleEditForm}><span class="material-icons">
-                    edit
-                </span>Editar</button> : ""}
+                {(pathname === "/activity-hub" && !edit) ?
+                    <button onClick={handleEditForm}>
+                        <span class="material-icons">
+                            edit
+                        </span>
+                        Editar
+                    </button> : ""}
             </div>
         </div>
     )

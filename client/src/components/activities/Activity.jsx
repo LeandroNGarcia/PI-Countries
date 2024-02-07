@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "./Activity.css"
 import { useLocation } from 'react-router-dom'
 import DetailActivity from '../detailActivity/DetailActivity'

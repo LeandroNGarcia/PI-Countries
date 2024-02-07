@@ -37,6 +37,7 @@ const Detail = ({ navigate, postActivity, handleBackChange }) => {
     const { name, continent, capital, population, subRegion, flag, area, maps, Activities } = country
     return (
         <div className='contain-detail'>
+            {name ?
             <div className='detail'>
                 <div className='primary-content'>
                     <a href={maps} target="_blank" rel="noopener noreferrer">
@@ -74,6 +75,7 @@ const Detail = ({ navigate, postActivity, handleBackChange }) => {
                         : ""}
                 </div>
             </div>
+            : <h1>Cargando Contenido...</h1>}
             <div style={{
                 display: "flex",
                 justifyContent: "center",

@@ -5,9 +5,9 @@
     transform: translate(-50%, -50%);
     height: 100vh;
     width: 100vw;
-    background: transparent;
+    background-color: rgba(36, 36, 36, 0.61);
     backdrop-filter: blur(5px);
-    z-index: 1;
+    z-index: 2;
 }
 
 .modal {
@@ -15,7 +15,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.774);
+    background-color: rgba(0, 0, 0, 0.712);
     backdrop-filter: blur(5px);
     width: 30em;
     height: 15em;
@@ -28,6 +28,13 @@
     border: 2px solid white;
     border-style: inset;
     text-shadow: 1px 1px 0 black;
+    z-index: 3;
+}
+
+.eleccion-modal {
+    display: flex;
+    flex-direction: row;
+    gap: 4em;
 }
 
 .contain-elimin {
@@ -61,10 +68,6 @@
     text-shadow: 1px 1px 0 black;
 }
 
-.eleccion-modal {
-    display: flex;
-    gap: 4em;
-}
 
 .activity {
     display: flex;
@@ -250,7 +253,8 @@
     position: absolute;
     background-color: rgba(0, 0, 0, 0.795);
     color: white;
-    width: 10em;
+    min-width: 10em;
+    max-width: 18em;
     min-height: 6em;
     max-height: max-content;
     border: 1.5px solid white;
@@ -260,7 +264,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: .2em;
+    padding: .8em 1.2em;
     cursor: none;
 }
 

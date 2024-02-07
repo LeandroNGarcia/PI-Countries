@@ -9,7 +9,7 @@ const ActivityForm = ({ countryId, navigate, postActivity, handleForm }) => {
     const [dataForm, setDataForm] = useState({
         name: "",
         season: "",
-        dificult: 0,
+        dificult: 1,
         duration: 0,
         countryId: countryId ? countryId : "",
         countryId2: "",
@@ -88,9 +88,17 @@ const ActivityForm = ({ countryId, navigate, postActivity, handleForm }) => {
                         <option value="Otoño">Otoño</option>
                         <option value="Primavera">Primavera</option>
                     </select>
-                    <label htmlFor="dificult">Dificultad de la actividad</label> <input id='dificult' name='dificult' type="number" onChange={handleData} autoCorrect='false' autoComplete='false' />
+                    <label htmlFor="dificult">Dificultad de la actividad</label>
+                    <select name="dificult" id="dificult" onChange={handleData}>
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                        <option value={5}>5</option>
+                    </select>
                     <span className='span-error'>{errors.dificult}</span>
-                    <label htmlFor="duration">Duracion de la actividad</label> <input id='duration' name='duration' type="number" onChange={handleData} />
+                    <label htmlFor="duration">Duracion de la actividad</label>
+                    <input id='duration' name='duration' type="number" onChange={handleData} min={0} max={36} />
                     <span className='span-error'>{errors.duration}</span>
                 </div>
                 <div className='activity-select'>
